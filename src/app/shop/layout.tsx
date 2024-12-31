@@ -13,7 +13,7 @@ export default function ShopLayout({
         <AppNavigation />
       </div>
 
-      <main className="mt-2">{children}</main>
+      <main className="mt-8">{children}</main>
     </header>
   );
 }

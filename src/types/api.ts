@@ -5,11 +5,21 @@ export interface ProductsApiResponse<T> {
   products: T[];
 }
 
+export type Category =
+  | 'mens-shirts'
+  | 'mens-shoes'
+  | 'mens-watches'
+  | 'womens-bags'
+  | 'womens-dresses'
+  | 'womens-jewelery'
+  | 'womens-shoes'
+  | 'womens-watches';
+
 export interface Product {
   id: number;
   title: string;
   description: string;
-  category: string;
+  category: Category;
   price: number;
   discountPercentage: number;
   rating: number;

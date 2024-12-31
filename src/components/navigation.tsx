@@ -14,7 +14,7 @@ const categories: Category = {
   Men: [
     {
       title: 'Shirts',
-      href: '/shop/Mens-shirts',
+      href: '/shop/mens-shirts',
     },
     {
       title: 'Shoes',
@@ -36,7 +36,7 @@ const categories: Category = {
     },
     {
       title: 'Jewelry',
-      href: '/shop/womens-jewelry',
+      href: '/shop/womens-jewellery',
     },
     {
       title: 'Shoes',

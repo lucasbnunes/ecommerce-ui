@@ -1,5 +1,5 @@
 import { getProductsByCategory } from '@/features/products/api/get-products';
-import { ProductsGrid } from '@/features/products/products-grid';
+import { ProductsGrid } from '@/features/products/components/products-grid';
 
 export default async function ProductsPage({
   params,

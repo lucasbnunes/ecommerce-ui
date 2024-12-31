@@ -1,7 +1,7 @@
+import { ProductImage } from '@/components/product-image';
 import { cn } from '@/lib/utils';
 import { Product } from '@/types/api';
 import { formatCurrency } from '@/utils/format';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Rating } from './rating';
 
@@ -14,18 +14,11 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link
-      href={`/product/${product.id}`}
+      href={`/shop/product/${product.id}`}
       className="inline-block w-[248px] h-[328px] "
     >
       <div className="max-w-full group flex flex-col">
-        <div className="bg-neutral-100 max-w-full w-full rounded-lg inline-block relative flex-1 aspect-square">
-          <Image
-            src={product.images[0]}
-            alt={product.title}
-            fill
-            className="object-contain"
-          />
-        </div>
+        <ProductImage src={product.images[0]} alt={product.title} />
 
         <div className="mt-2">
           <div className="flex gap-2 text-sm text-zinc-700 ">

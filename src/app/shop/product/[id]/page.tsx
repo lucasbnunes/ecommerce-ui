@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { formatCurrency } from '@/utils/format';
 import { TruckIcon, UndoDotIcon } from 'lucide-react';
 import { ImageGallery } from '../_components/image-gallery';
+import { Stars } from '@/features/reviews/stars';
 
 export default async function ProductPage({
   params,
@@ -55,7 +56,7 @@ export default async function ProductPage({
             <NumberInput />
           </div>
 
-          <div className="w-full">
+          <div className="w-full mt-4">
             <Button className="mt-2 w-full">Add to cart</Button>
           </div>
 
@@ -85,6 +86,11 @@ export default async function ProductPage({
         <h4 id="#reviews" className="text-2xl font-medium mb-">
           Reviews
         </h4>
+
+        <div className="flex items-center gap-2 mt-4">
+          <span className="text-2xl font-medium">{product.rating}</span>
+          <Stars rating={product.rating} />
+        </div>
 
         <div>
           {product.reviews.map((review) => (

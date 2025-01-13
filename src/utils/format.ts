@@ -4,3 +4,7 @@ export function formatCurrency(value: number, discountPercentage = 0) {
     currency: 'USD',
   }).format(value - value * (discountPercentage / 100));
 }
+
+export function formatDateAsString(date: Date | string) {
+  return new Date(date).toLocaleDateString();
+}

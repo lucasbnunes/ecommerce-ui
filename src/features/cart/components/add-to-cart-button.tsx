@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import React from 'react';
 import { useCartContext } from '../hooks/use-cart-context';
 import { CartItem } from '../types/cart-item';
+import { useToast } from '@/hooks/use-toast';
 
 interface AddToCartButtonProps {
   product: Omit<CartItem, 'quantity'>;
@@ -13,9 +14,13 @@ interface AddToCartButtonProps {
 export function AddToCartButton({ product }: AddToCartButtonProps) {
   const { addToCart } = useCartContext();
   const [quantity, setQuantity] = React.useState(1);
+  const { toast } = useToast();
 
   function handleClick() {
     addToCart({ ...product, quantity });
+    toast({
+      title: 'Added to cart',
+    });
   }
 
   return (

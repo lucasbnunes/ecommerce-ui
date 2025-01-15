@@ -1,13 +1,12 @@
-import { NumberInput } from '@/components/number-input';
-import { Button } from '@/components/ui/button';
+import { AddToCartButton } from '@/features/cart/components/add-to-cart-button';
 import { getProductById } from '@/features/products/api/get-product';
 import { Rating } from '@/features/products/components/rating';
 import { Review } from '@/features/reviews/review';
+import { Stars } from '@/features/reviews/stars';
 import { cn } from '@/lib/utils';
 import { formatCurrency } from '@/utils/format';
 import { TruckIcon, UndoDotIcon } from 'lucide-react';
 import { ImageGallery } from '../_components/image-gallery';
-import { Stars } from '@/features/reviews/stars';
 
 export default async function ProductPage({
   params,
@@ -52,12 +51,8 @@ export default async function ProductPage({
             reviewsCount={product.reviews.length}
           />
 
-          <div className="self-start mt-8">
-            <NumberInput />
-          </div>
-
-          <div className="w-full mt-4">
-            <Button className="mt-2 w-full">Add to cart</Button>
+          <div className="mt-8">
+            <AddToCartButton product={product} />
           </div>
 
           <div className="flex gap-3 border border-gray-300 rounded-lg p-4 mt-16">

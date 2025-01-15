@@ -1,4 +1,4 @@
-import { CartLink } from './cart-link';
+import { CartLink } from '../features/cart/components/cart-link';
 
 export function AppBar() {
   return (

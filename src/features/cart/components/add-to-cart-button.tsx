@@ -26,10 +26,7 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
   return (
     <div className="flex flex-col items-start">
       <div className="self-start">
-        <NumberInput
-          value={quantity}
-          onChange={(e) => setQuantity(parseInt(e.target.value))}
-        />
+        <NumberInput value={quantity} onValueChange={setQuantity} />
       </div>
       <Button onClick={handleClick} className="mt-2 w-full">
         Add to cart

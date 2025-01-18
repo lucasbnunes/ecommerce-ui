@@ -41,6 +41,7 @@ export function CartContextProvider({ children }: PropsWithChildren) {
           title: item.title,
           price: item.price,
           quantity: item.quantity,
+          thumbnail: item.thumbnail,
         },
       ]);
     }

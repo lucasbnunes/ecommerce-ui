@@ -32,14 +32,7 @@ export function NumberInput({
   }
 
   function decrement() {
-    setValue((prev) => Math.max(1, prev - 1));
-  }
-
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const newValue = parseInt(event.target.value);
-    if (newValue >= 0) {
-      setValue(newValue);
-    }
+    setValue((prev) => Math.max(0, prev - 1));
   }
 
   return (
@@ -62,7 +55,6 @@ export function NumberInput({
           className
         )}
         value={String(value)}
-        onChange={(e) => handleChange(e)}
       />
       <Button
         variant="outline"

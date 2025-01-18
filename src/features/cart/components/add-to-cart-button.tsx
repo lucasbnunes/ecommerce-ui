@@ -21,6 +21,7 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
     toast({
       title: 'Added to cart',
     });
+    setQuantity(1);
   }
 
   return (

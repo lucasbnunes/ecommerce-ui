@@ -22,8 +22,10 @@ export function NumberInput({
   );
 
   useEffect(() => {
-    onValueChange?.(value);
-  }, [onValueChange, value]);
+    if (value !== defaultValue) {
+      onValueChange?.(value);
+    }
+  }, [onValueChange, value, defaultValue]);
 
   function increment() {
     setValue((prev) => prev + 1);
@@ -31,6 +33,13 @@ export function NumberInput({
 
   function decrement() {
     setValue((prev) => Math.max(1, prev - 1));
+  }
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const newValue = parseInt(event.target.value);
+    if (newValue >= 0) {
+      setValue(newValue);
+    }
   }
 
   return (
@@ -53,15 +62,13 @@ export function NumberInput({
           className
         )}
         value={String(value)}
-        onChange={(e) => {
-          setValue(parseInt(e.target.value));
-        }}
+        onChange={(e) => handleChange(e)}
       />
       <Button
         variant="outline"
         size="icon"
         onClick={increment}
-        aria-label="Decrement quantity"
+        aria-label="Increment quantity"
       >
         <PlusIcon />
       </Button>

@@ -29,6 +29,8 @@ export function CartContextProvider({ children }: PropsWithChildren) {
   }, [cart]);
 
   const addToCart = (item: CartItem) => {
+    if (item.quantity < 1) return;
+
     const existingItem = cart.find((i) => i.id === item.id);
 
     if (existingItem) {
@@ -52,6 +54,11 @@ export function CartContextProvider({ children }: PropsWithChildren) {
   };
 
   const updateQuantity = (id: number, quantity: number) => {
+    if (quantity < 1) {
+      removeFromCart(id);
+      return;
+    }
+
     setCart(cart.map((i) => (i.id === id ? { ...i, quantity } : i)));
   };
 

@@ -32,8 +32,8 @@ export function CartList() {
           </div>
 
           <NumberInput
-            defaultValue={item.quantity}
-            onValueChange={(v) => updateQuantity(item.id, v)}
+            value={item.quantity}
+            onChange={(newValue) => updateQuantity(item.id, newValue)}
           />
         </div>
       ))}

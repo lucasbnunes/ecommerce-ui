@@ -1,38 +1,37 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { MinusIcon, PlusIcon } from 'lucide-react';
+import React from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { cn } from '@/lib/utils';
-import React, { useEffect } from 'react';
 
-interface NumberInputProps extends React.ComponentProps<'input'> {
-  defaultValue?: number | string;
-  onValueChange?: (value: number) => void;
+interface NumberInputProps
+  extends Omit<React.ComponentProps<'input'>, 'onChange'> {
+  value: number;
+  onChange: (newValue: number) => void;
+  min?: number;
+  max?: number;
 }
 
 export function NumberInput({
+  value,
   className,
-  defaultValue = 1,
-  onValueChange,
+  onChange,
+  min = 0,
+  max = Infinity,
   ...props
 }: NumberInputProps) {
-  const [value, setValue] = React.useState<number>(
-    typeof defaultValue === 'string' ? parseInt(defaultValue) : defaultValue
-  );
-
-  useEffect(() => {
-    if (value !== defaultValue) {
-      onValueChange?.(value);
-    }
-  }, [onValueChange, value, defaultValue]);
-
   function increment() {
-    setValue((prev) => prev + 1);
+    if (value < max) {
+      onChange(value + 1);
+    }
   }
 
   function decrement() {
-    setValue((prev) => Math.max(0, prev - 1));
+    if (value > min) {
+      onChange(value - 1);
+    }
   }
 
   return (

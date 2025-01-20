@@ -13,15 +13,18 @@ export interface CartContextValues {
   clearCart: () => void;
   totalItems: number;
   totalAmount: number;
+  isLoading: boolean;
 }
 
 export const CartContext = React.createContext({});
 
 export function CartContextProvider({ children }: PropsWithChildren) {
   const [cart, setCart] = React.useState<CartItem[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
     setCart(getSavedCart());
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -80,6 +83,7 @@ export function CartContextProvider({ children }: PropsWithChildren) {
     clearCart,
     totalItems,
     totalAmount,
+    isLoading,
   };
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
